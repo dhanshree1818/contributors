@@ -4,5 +4,6 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('index/', views.index),
+    path('', views.index),
+    path('contributors/', views.directlink , name="directlink"),
 ]

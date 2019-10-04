@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block body%}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<div class="container">
+
+    <table>
+      <tr>
+        <th>Name of Contributor</th>
+        <th>Number of Commits (Including Merge)</th>
+      </tr>
+
+
+        {%for data in commits %}
+            {% if forloop.counter <= 10 %}
+                <tr>
+                    <td>{{data.author.login}}</td>
+                    <td>{{ data.total }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+
+    </table>
+
+</div>
+{% endblock %}
