@@ -1,41 +1,61 @@
 {% extends 'base.html' %}
 {% block body%}
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 50%;
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+.shadowbox {
+  width: 15em;
+  border: 1px solid #333;
+  box-shadow: 8px 8px 5px #444;
+  padding: 8px 12px;
+  background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+}
+.middlediv
+{
+float: left;
+
+width: 98%;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 </style>
-<div class="container">
-
-    <table>
-      <tr>
-        <th>Name of Contributor</th>
-        <th>Number of Commits (Including Merge)</th>
-      </tr>
 
 
-        {%for data in commits %}
-            {% if forloop.counter <= 10 %}
-                <tr>
-                    <td>{{data.author.login}}</td>
-                    <td>{{ data.total }}</td>
-                </tr>
-            {% endif %}
-        {% endfor %}
+<div class="middlediv" style="border:1px solid black;align:center;" ><center></center>
 
-    </table>
+<!--    <table>-->
+<!--      <tr>-->
+<!--        <th>Name of Contributor</th>-->
+<!--        <th>Number of Commits</th>-->
+<!--      </tr>-->
+
+<div class="row">
+       <div class="col-md-8 col-md-offset-2 col-sm-12 maincontent" style="background:gray">
+           <div style="text-align:center;border:1px solid black;"><h1>Top Ten Github contributors!!</h1></div>
+       </div>
+</div>
+<center>
+<div class="shadowbox" style="background:MediumSeaGreen;width:50%;">
+{%for data in commits %}
+    {% if forloop.counter <= 10 %}
+        <img src="{{avatar}}" alt="Avatar" class="avatar">
+        <h2><a style="center" href="{{data.author.html_url}}">{{data.author.login}}</a></h2>
+        <p>{{ data.total }}  commits</p>
+    {% endif %}<br><br><br>
+{% endfor %}
+
+
+
+        <a href="#" onclick="history.go(-1)"><h3>Go Back</h3></a>
+</div>
+</center>
+
 
 </div>
+
+
 {% endblock %}

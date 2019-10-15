@@ -3,24 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Contributors</title>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 600px;
+  margin: auto;
+  height:300px;
+  text-align: center;
+  border:solid-black;
+  background:MediumSeaGreen;border:1px solid black;
+  position:centered;
+
+}
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
 </head>
-<body>
+<body style="background:LightGrey">
+
     {% block body %}
-    <div>
-        <h2>Enter Repository Link</h2>
-
-    </div>
-
-    <div>
+    <div class="card"><br><br>
+        <h1 style="font-family:TimesNewRoman">Enter Repository Link</h1>
         {% if form %}
-
-            <form  action="{% url 'directlink' %}" method="POST">
+        <h3>
+            <form style="font-family:TimesNewRoman" action="{% url 'MyView' %}" method="POST" >
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="submit">
+                {{ form.as_p }}<br>
+                <input class="green ui button" style="font-family:TimesNewRoman; border:solid black" type="submit" value="Submit"><br>
             </form>
+        </h3>
         {% endif %}
+
     </div>
-{% endblock %}
+    {% endblock %}
+
 </body>
 </html>

@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
 
+from ttcontrib.views import MyIndex, MyView
 from . import views
 
 urlpatterns = [
-    path('', views.index),
-    path('contributors/', views.directlink , name="directlink"),
+    path('', MyIndex.as_view()),
+    path('contributors/', MyView.as_view(), name="MyView"),
 ]
